@@ -17,4 +17,6 @@ class Empresa extends Model
         'cnpj',
         'endereco',
     ];
+
+    
 }

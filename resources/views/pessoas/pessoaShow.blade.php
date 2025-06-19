@@ -35,6 +35,17 @@
                         <p class="text-md">{{ $pessoa->observacoes ?? 'N/A' }}</p>
                     </div>
 
+                    <div class="mb-4">
+                        <p class="text-lg font-semibold">{{ __('Empresa:') }}</p>
+                        <p class="text-md">
+                            @if ($pessoa->empresa)
+                                {{ $pessoa->empresa->razao_social }} ({{ $pessoa->empresa->nome_fantasia ?? 'N/A' }})
+                            @else
+                                {{ __('Não associada a uma empresa') }}
+                            @endif
+                        </p>
+                    </div>
+
                     @if ($pessoa->trashed())
                         <div class="mb-4 text-red-500">
                             <p class="text-lg font-semibold">{{ __('Excluído em:') }}</p>

@@ -16,9 +16,15 @@ class Pessoa extends Model
         'telefone',
         'data_nascimento',
         'observacoes',
+        'empresa_id'
     ];
 
     protected $casts = [
         'data_nascimento' => 'date',
     ];
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class);
+    }
 }
