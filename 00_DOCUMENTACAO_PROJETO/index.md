@@ -97,3 +97,39 @@ Dentro de cada pasta, será seguido o **padrão de documentação** com:
 ## ✅ Objetivo
 
 Garantir que todas as funcionalidades implementadas sigam um **padrão de qualidade**, facilitando o entendimento, manutenção e evolução do sistema.
+
+## Controle de Mudanças de Código
+
+O controle de mudanças é um processo estruturado para gerenciar modificações no código-fonte de um projeto, garantindo estabilidade, rastreabilidade e qualidade. Ele define como as alterações são desenvolvidas, testadas e promovidas até a produção, minimizando riscos e falhas. Dessa forma, utilizamos Git como sistema de controle de versão distribuído e GitHub como plataforma para gerenciamento de repositórios, revisão de código e colaboração entre desenvolvedores.
+
+### Fluxo de linhas:
+
+- **Branches das issues**:
+    - Linhas responsáveis pelo de desenvolvimento, criada a partir da branch "dev";
+    - A branch deve começar com o prefixo "feat/", depois o nome da funcionalidade que será tratada. Exemplo: feat/cadasto-lote-candidato;
+    - As issues são criadas a partir da main, caso seja a primeira a ser criada, ou a partir de outra branch já testada, caso possua outras branches que podem ser aproveitadas;  
+    - Cada issue terá sua própria branch para desenvolvimento;
+    - Após a implementação, deve-se abrir um Pull Request para a branch "dev";
+    
+- **Homologação**:
+    - Linha responsável por validar as branches criadas antes de ser envida para a produção;
+    - Linha criada a partir da branch "main";
+    - Caso todas as branches criadas sejam validadas com sucesso nesta linha, haverá um Pull Request para a linha de produção, ou seja, para a branch "main";
+    - Caso exista algum erro ao realizar a validação de alguma branch enviada para essa linha, serão criadas branches de correção até que tudo esteja validado com sucesso.
+
+- **Produção**:
+    - Linha responsável por receber códigos validados pela branch de homologação e por subir o sistema para o servidor de produção automaticamente;
+    - Se trata da linha chamada "main";
+    - Caso exista algum erro no sistema em produção, será feita a restauração do "commit" anterior, caso exista versões antigas, e serão criadas branches de correção.
+    
+- **Branches das hotfix/correções de erro:**
+    - Linha responsável pela correção de erros verificada na branch de homologação ou produção;
+    - A branch deve começar com o prefixo "hotfix/", depois o nome da funcionalidade que será tratada. Exemplo: hotfix/validacao-imc-candidato;
+    - Se um erro for identificado nas validações da linha "dev" ou na "main", uma nova branch de hotfix será criada a partir dela;
+    - Cada correção será implementada, testada e, se aprovada, integrada novamente à dev, assim como nas branches de issues.
+
+### Diagrama de Fluxo:
+
+O fluxo ilustrado abaixo demonstrando as linhas de desenvolvimento (branches das issues, representadas por "feat"), homologação ("dev"), produção ("main") e correções ("hotfix"). Esse diagrama reforça a importância de seguir o processo para garantir a qualidade e integridade do código.
+
+[![Fluxo de Mudanças](https://i.postimg.cc/26zB50dN/Fluxo-de-mudan-as-2.png)](https://postimg.cc/CZQKPH6c)
